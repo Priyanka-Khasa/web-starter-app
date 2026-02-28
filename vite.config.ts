@@ -65,6 +65,10 @@ function copyWasmPlugin(): Plugin {
 export default defineConfig({
   plugins: [react(), copyWasmPlugin()],
   server: {
+    host: "localhost",
+    hmr: {
+      host: "localhost",
+    },
     // ✅ This is what you needed (not server.api)
     // Frontend can call /api/... and Vite will forward it to backend.
     proxy: {

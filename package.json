@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "server": "ts-node server/index.js",
+    "server": "node src/server/index.js",
     "dev:all": "concurrently \"npm run server\" \"npm run dev\""
   },
   "dependencies": {

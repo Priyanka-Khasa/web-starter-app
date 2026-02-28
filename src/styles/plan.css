@@ -1,0 +1,978 @@
+/* ============================================================
+   PLAN TAB (plx-*) — Premium Dark UI • Responsive • No libs
+   Works with your JSX classes exactly as-is.
+   Drop into: src/styles/plan.css (or wherever)
+   ============================================================ */
+
+/* ---- Base reset (scoped-ish) ---- */
+.plx-wrap, .plx-wrap * { box-sizing: border-box; }
+.plx-wrap button { font-family: inherit; }
+.plx-wrap img { display: block; max-width: 100%; }
+
+/* ---- Premium tokens ---- */
+:root{
+  --plx-bg0: #070A12;
+  --plx-bg1: #0B1020;
+  --plx-surface: rgba(255,255,255,.06);
+  --plx-surface2: rgba(255,255,255,.09);
+  --plx-stroke: rgba(255,255,255,.10);
+  --plx-stroke2: rgba(255,255,255,.14);
+  --plx-text: rgba(255,255,255,.92);
+  --plx-muted: rgba(255,255,255,.68);
+  --plx-dim: rgba(255,255,255,.52);
+
+  /* Accent */
+  --plx-a1: #7C3AED;  /* violet */
+  --plx-a2: #22C55E;  /* green  */
+  --plx-a3: #06B6D4;  /* cyan   */
+  --plx-warn: #F59E0B;
+  --plx-danger: #EF4444;
+
+  /* Shadow */
+  --plx-shadow: 0 18px 60px rgba(0,0,0,.45);
+  --plx-shadow2: 0 10px 30px rgba(0,0,0,.35);
+
+  /* Radius */
+  --plx-r1: 14px;
+  --plx-r2: 18px;
+  --plx-r3: 22px;
+
+  /* Spacing */
+  --plx-gap: 14px;
+  --plx-gap2: 18px;
+
+  /* Focus ring */
+  --plx-ring: 0 0 0 3px rgba(124,58,237,.28);
+}
+
+/* ---- Page background (premium glow) ---- */
+.plx-wrap{
+  min-height: 100%;
+  color: var(--plx-text);
+  padding: 18px 18px 28px;
+  border-radius: var(--plx-r3);
+
+  background:
+    radial-gradient(1100px 520px at 12% -10%, rgba(124,58,237,.25), transparent 60%),
+    radial-gradient(900px 520px at 90% 0%, rgba(6,182,212,.18), transparent 60%),
+    radial-gradient(700px 500px at 45% 110%, rgba(34,197,94,.14), transparent 60%),
+    linear-gradient(180deg, var(--plx-bg1), var(--plx-bg0));
+}
+
+/* Optional: if your app already has .card styles, this complements it */
+.card.plx-card{
+  background: linear-gradient(180deg, rgba(255,255,255,.075), rgba(255,255,255,.045));
+  border: 1px solid var(--plx-stroke);
+  border-radius: var(--plx-r3);
+  box-shadow: var(--plx-shadow2);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+/* ---- Header ---- */
+.plx-head{
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 8px 6px 14px;
+}
+
+.plx-headLeft{ min-width: 0; }
+
+.plx-chip{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--plx-stroke);
+  background: rgba(255,255,255,.06);
+  color: rgba(255,255,255,.86);
+  font-size: 12px;
+  letter-spacing: .2px;
+}
+
+.plx-title{
+  margin: 10px 0 6px;
+  font-size: 28px;
+  line-height: 1.15;
+  letter-spacing: -0.6px;
+}
+
+.plx-sub{
+  margin: 0;
+  color: var(--plx-muted);
+  max-width: 68ch;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* ---- Tabs ---- */
+.plx-nav{
+  margin-top: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.plx-tab{
+  appearance: none;
+  border: 1px solid var(--plx-stroke);
+  background: rgba(255,255,255,.05);
+  color: rgba(255,255,255,.78);
+  padding: 10px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .2px;
+  cursor: pointer;
+  transition: transform .15s ease, background .15s ease, border-color .15s ease;
+}
+.plx-tab:hover{
+  transform: translateY(-1px);
+  border-color: var(--plx-stroke2);
+  background: rgba(255,255,255,.075);
+}
+.plx-tab.active{
+  background: linear-gradient(135deg, rgba(124,58,237,.28), rgba(6,182,212,.20));
+  border-color: rgba(124,58,237,.45);
+  color: rgba(255,255,255,.95);
+  box-shadow: 0 10px 30px rgba(124,58,237,.12);
+}
+.plx-tab:focus-visible{ outline: none; box-shadow: var(--plx-ring); }
+
+/* ---- Live badge ---- */
+.plx-headRight{ flex: 0 0 auto; }
+.plx-live{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--plx-stroke);
+  background: rgba(255,255,255,.05);
+}
+.plx-liveDot{
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: var(--plx-a2);
+  box-shadow: 0 0 0 0 rgba(34,197,94,.45);
+  animation: plxPulse 1.6s infinite;
+}
+@keyframes plxPulse{
+  0%{ box-shadow: 0 0 0 0 rgba(34,197,94,.40); }
+  70%{ box-shadow: 0 0 0 10px rgba(34,197,94,0); }
+  100%{ box-shadow: 0 0 0 0 rgba(34,197,94,0); }
+}
+.plx-liveTop{ font-size: 12px; font-weight: 800; letter-spacing: .3px; }
+.plx-liveSub{ font-size: 12px; color: var(--plx-muted); margin-top: 2px; }
+
+/* ---- Layout grid ---- */
+.plx-grid{
+  display: grid;
+  grid-template-columns: 1.6fr .95fr;
+  gap: 16px;
+  margin-top: 10px;
+}
+.plx-col{ display: grid; gap: 16px; min-width: 0; }
+.plx-side{ display: grid; gap: 16px; min-width: 0; }
+
+/* ---- Common card header ---- */
+.plx-cardHead{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.plx-cardHead h3{
+  margin: 0;
+  font-size: 15px;
+  letter-spacing: -0.2px;
+}
+
+/* ---- Muted helpers ---- */
+.plx-muted{ color: var(--plx-muted); }
+.plx-muted.mini{ font-size: 12px; color: var(--plx-dim); }
+
+/* ---- Pills ---- */
+.plx-pill{
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--plx-stroke);
+  background: rgba(255,255,255,.05);
+  color: rgba(255,255,255,.86);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .2px;
+  white-space: nowrap;
+}
+.plx-pill.subtle{
+  background: rgba(255,255,255,.04);
+  color: rgba(255,255,255,.76);
+}
+.plx-pill.ok{
+  border-color: rgba(34,197,94,.35);
+  background: rgba(34,197,94,.12);
+}
+.plx-pill.pending{
+  border-color: rgba(6,182,212,.35);
+  background: rgba(6,182,212,.10);
+}
+.plx-pill.muted{
+  border-color: rgba(255,255,255,.12);
+  background: rgba(255,255,255,.035);
+  color: rgba(255,255,255,.72);
+}
+.plx-pill.warn{
+  border-color: rgba(245,158,11,.42);
+  background: rgba(245,158,11,.12);
+}
+
+/* ---- Buttons ---- */
+.plx-btn{
+  appearance: none;
+  border: 1px solid var(--plx-stroke);
+  background: rgba(255,255,255,.05);
+  color: rgba(255,255,255,.88);
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform .14s ease, background .14s ease, border-color .14s ease, box-shadow .14s ease;
+  white-space: nowrap;
+}
+.plx-btn:hover{
+  transform: translateY(-1px);
+  background: rgba(255,255,255,.075);
+  border-color: var(--plx-stroke2);
+}
+.plx-btn:active{ transform: translateY(0px); }
+.plx-btn:focus-visible{ outline: none; box-shadow: var(--plx-ring); }
+
+.plx-btn.primary{
+  border-color: rgba(124,58,237,.45);
+  background: linear-gradient(135deg, rgba(124,58,237,.85), rgba(6,182,212,.55));
+  box-shadow: 0 14px 34px rgba(124,58,237,.18);
+}
+.plx-btn.primary:hover{
+  border-color: rgba(124,58,237,.60);
+  box-shadow: 0 16px 44px rgba(124,58,237,.22);
+}
+
+.plx-btn.ghost{
+  background: rgba(255,255,255,.04);
+}
+
+.plx-btn.danger{
+  border-color: rgba(239,68,68,.45);
+  background: rgba(239,68,68,.10);
+}
+.plx-btn:disabled{
+  opacity: .55;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ---- Row layout helpers ---- */
+.plx-row{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+/* ---- HERO card ---- */
+.plx-hero{
+  padding: 18px;
+  position: relative;
+  overflow: hidden;
+}
+.plx-hero::before{
+  content:"";
+  position:absolute;
+  inset:-2px;
+  background:
+    radial-gradient(500px 280px at 20% 10%, rgba(124,58,237,.22), transparent 60%),
+    radial-gradient(440px 280px at 90% 20%, rgba(6,182,212,.18), transparent 60%);
+  pointer-events: none;
+  opacity: .9;
+}
+
+.plx-hero > *{ position: relative; z-index: 1; }
+
+.plx-heroTop{
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+}
+.plx-heroKicker{
+  color: rgba(255,255,255,.72);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .25px;
+}
+.plx-heroTitle{
+  margin-top: 6px;
+  font-size: 22px;
+  line-height: 1.2;
+  letter-spacing: -0.4px;
+  font-weight: 850;
+}
+.plx-heroMeta{
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.plx-heroActions{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+/* ---- Progress ---- */
+.plx-progressWrap{ margin-top: 16px; }
+.plx-progress{
+  width: 100%;
+  height: 12px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.08);
+  overflow: hidden;
+}
+.plx-progressFill{
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(124,58,237,.95), rgba(6,182,212,.70), rgba(34,197,94,.65));
+  box-shadow: 0 10px 20px rgba(124,58,237,.14);
+  transition: width .35s ease;
+}
+
+/* ---- Next up strip ---- */
+.plx-nextUp{
+  margin-top: 14px;
+  padding: 12px 12px;
+  border-radius: var(--plx-r2);
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.045);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.plx-nextTitle{
+  font-size: 12px;
+  font-weight: 800;
+  color: rgba(255,255,255,.78);
+  letter-spacing: .25px;
+}
+.plx-nextSub{
+  margin-top: 3px;
+  font-size: 13px;
+  color: rgba(255,255,255,.86);
+}
+
+/* ---- Weekly timeline ---- */
+.plx-week{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.plx-dayRow{
+  width: 100%;
+  text-align: left;
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.04);
+  border-radius: 16px;
+  padding: 12px 12px;
+  cursor: pointer;
+  transition: transform .14s ease, background .14s ease, border-color .14s ease;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.plx-dayRow:hover{
+  transform: translateY(-1px);
+  background: rgba(255,255,255,.06);
+  border-color: rgba(255,255,255,.14);
+}
+.plx-dayRow.isToday{
+  border-color: rgba(124,58,237,.35);
+  background: linear-gradient(135deg, rgba(124,58,237,.14), rgba(255,255,255,.04));
+}
+
+.plx-dayLeft{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.plx-dot{
+  width: 12px; height: 12px;
+  border-radius: 999px;
+  flex: 0 0 auto;
+  background: rgba(255,255,255,.22);
+  box-shadow: 0 0 0 6px rgba(255,255,255,.03);
+}
+.plx-dot.ok{ background: var(--plx-a2); box-shadow: 0 0 0 6px rgba(34,197,94,.12); }
+.plx-dot.pending{ background: var(--plx-a3); box-shadow: 0 0 0 6px rgba(6,182,212,.12); }
+.plx-dot.rest{ background: rgba(255,255,255,.28); box-shadow: 0 0 0 6px rgba(255,255,255,.06); }
+
+.plx-dayText{ min-width: 0; }
+.plx-dayTop{
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.plx-dayName{
+  font-weight: 900;
+  letter-spacing: .2px;
+}
+.plx-miniTag{
+  font-size: 11px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  border: 1px solid rgba(124,58,237,.35);
+  background: rgba(124,58,237,.14);
+  color: rgba(255,255,255,.88);
+  font-weight: 800;
+}
+.plx-status{
+  font-size: 12px;
+  font-weight: 800;
+  color: rgba(255,255,255,.70);
+}
+.plx-status.ok{ color: rgba(34,197,94,.95); }
+.plx-status.pending{ color: rgba(6,182,212,.95); }
+.plx-status.muted{ color: rgba(255,255,255,.58); }
+
+.plx-dayFocus{
+  margin-top: 4px;
+  color: rgba(255,255,255,.82);
+  font-size: 13px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.plx-chevron{
+  color: rgba(255,255,255,.45);
+  font-size: 22px;
+  line-height: 1;
+  padding-left: 8px;
+}
+
+/* ---- Subscription KV grid ---- */
+.plx-kvGrid{
+  display: grid;
+  gap: 10px;
+  margin-top: 10px;
+  margin-bottom: 12px;
+}
+.plx-kv{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.04);
+}
+.plx-kv .k{
+  color: rgba(255,255,255,.64);
+  font-size: 12px;
+  font-weight: 700;
+}
+.plx-kv .v{
+  color: rgba(255,255,255,.88);
+  font-size: 13px;
+  font-weight: 800;
+  text-align: right;
+}
+
+/* ---- Callout ---- */
+.plx-callout{
+  margin-top: 10px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(245,158,11,.35);
+  background: rgba(245,158,11,.10);
+  color: rgba(255,255,255,.82);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+/* ---- Coach booked mini block ---- */
+.plx-coachBooked{ margin-top: 8px; }
+.plx-coachTop{
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.plx-coachImg{
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  object-fit: cover;
+  border: 1px solid rgba(255,255,255,.12);
+  box-shadow: 0 10px 20px rgba(0,0,0,.25);
+}
+.plx-coachName{ font-weight: 900; letter-spacing: .2px; }
+.plx-coachMeta{ min-width: 0; }
+
+/* ---- Activity feed ---- */
+.plx-activity{
+  display: grid;
+  gap: 10px;
+}
+.plx-activityItem{
+  padding: 10px 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.04);
+}
+.plx-activityTitle{
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: .15px;
+}
+.plx-activitySub{
+  margin-top: 4px;
+  font-size: 12px;
+  color: rgba(255,255,255,.66);
+}
+
+/* ============================================================
+   SUBSCRIPTIONS VIEW
+   ============================================================ */
+.plx-cycle{
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.plx-chipBtn{
+  appearance: none;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.04);
+  color: rgba(255,255,255,.78);
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background .14s ease, border-color .14s ease, transform .14s ease;
+}
+.plx-chipBtn:hover{
+  transform: translateY(-1px);
+  border-color: rgba(255,255,255,.16);
+  background: rgba(255,255,255,.06);
+}
+.plx-chipBtn.active{
+  border-color: rgba(124,58,237,.45);
+  background: rgba(124,58,237,.16);
+  color: rgba(255,255,255,.92);
+}
+
+.plx-tierGrid{
+  margin-top: 14px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+.plx-tier{
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.04);
+  border-radius: 18px;
+  padding: 14px;
+  transition: transform .16s ease, border-color .16s ease, background .16s ease;
+}
+.plx-tier:hover{
+  transform: translateY(-2px);
+  border-color: rgba(255,255,255,.14);
+  background: rgba(255,255,255,.055);
+}
+.plx-tier.selected{
+  border-color: rgba(124,58,237,.45);
+  background: linear-gradient(180deg, rgba(124,58,237,.16), rgba(255,255,255,.04));
+  box-shadow: 0 18px 40px rgba(124,58,237,.12);
+}
+
+.plx-tierTop{
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+}
+.plx-tierName{
+  font-size: 16px;
+  font-weight: 950;
+  letter-spacing: -.2px;
+}
+.plx-price{
+  margin-top: 12px;
+  padding: 12px;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.04);
+}
+.plx-priceAmt{
+  font-size: 20px;
+  font-weight: 950;
+  letter-spacing: -.4px;
+}
+
+.plx-featureList{
+  margin-top: 12px;
+  display: grid;
+  gap: 8px;
+}
+.plx-feature{
+  position: relative;
+  padding-left: 22px;
+  font-size: 13px;
+  color: rgba(255,255,255,.80);
+  line-height: 1.45;
+}
+.plx-feature::before{
+  content: "";
+  position: absolute;
+  left: 0; top: 6px;
+  width: 10px; height: 10px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(124,58,237,.95), rgba(6,182,212,.75));
+  box-shadow: 0 0 0 5px rgba(124,58,237,.10);
+}
+
+/* ============================================================
+   COACHES VIEW
+   ============================================================ */
+.plx-coaches{ margin-top: 8px; }
+
+.plx-filters{
+  display: grid;
+  grid-template-columns: 1.3fr .7fr;
+  gap: 12px;
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+
+.plx-field{
+  display: grid;
+  gap: 6px;
+}
+.plx-field > span{
+  font-size: 12px;
+  color: rgba(255,255,255,.72);
+  font-weight: 800;
+  letter-spacing: .2px;
+}
+
+.plx-field input,
+.plx-field select{
+  width: 100%;
+  padding: 11px 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.04);
+  color: rgba(255,255,255,.90);
+  outline: none;
+  transition: border-color .14s ease, background .14s ease, box-shadow .14s ease;
+}
+.plx-field input::placeholder{ color: rgba(255,255,255,.45); }
+.plx-field input:focus,
+.plx-field select:focus{
+  border-color: rgba(124,58,237,.45);
+  background: rgba(255,255,255,.05);
+  box-shadow: var(--plx-ring);
+}
+
+/* Coach grid */
+.plx-coachGrid{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 10px;
+}
+
+.plx-coachCard{
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.04);
+  border-radius: 18px;
+  padding: 14px;
+  transition: transform .16s ease, border-color .16s ease, background .16s ease;
+  box-shadow: 0 10px 22px rgba(0,0,0,.18);
+}
+.plx-coachCard:hover{
+  transform: translateY(-2px);
+  border-color: rgba(255,255,255,.14);
+  background: rgba(255,255,255,.055);
+}
+
+.plx-coachCardTop{
+  display: grid;
+  grid-template-columns: 60px 1fr auto;
+  gap: 12px;
+  align-items: center;
+}
+.plx-coachCardImg{
+  width: 60px;
+  height: 60px;
+  border-radius: 16px;
+  object-fit: cover;
+  border: 1px solid rgba(255,255,255,.12);
+}
+.plx-coachCardMeta{ min-width: 0; }
+.plx-coachName{
+  font-weight: 950;
+  letter-spacing: -.15px;
+  line-height: 1.15;
+}
+.plx-priceRow{
+  margin-top: 12px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.04);
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+}
+.plx-priceRow .plx-priceAmt{
+  font-size: 16px;
+  font-weight: 950;
+}
+
+/* ============================================================
+   BUILDER VIEW
+   ============================================================ */
+.plx-builder{
+  display: grid;
+  gap: 12px;
+  margin-top: 12px;
+}
+.plx-builderRow{
+  display: grid;
+  grid-template-columns: 70px 1fr 220px;
+  gap: 12px;
+  align-items: center;
+  padding: 12px;
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.04);
+}
+.plx-dayLabel{
+  font-weight: 950;
+  letter-spacing: .2px;
+  color: rgba(255,255,255,.86);
+}
+
+/* ============================================================
+   MODAL + DRAWER + CHECKOUT
+   ============================================================ */
+.plx-modal{
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  background: rgba(0,0,0,.55);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.plx-drawer,
+.plx-checkout{
+  width: min(860px, 100%);
+  border-radius: 22px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.05));
+  box-shadow: var(--plx-shadow);
+  overflow: hidden;
+  animation: plxPop .16s ease-out;
+}
+@keyframes plxPop{
+  from{ transform: translateY(10px); opacity: .0; }
+  to{ transform: translateY(0px); opacity: 1; }
+}
+
+.plx-drawerHead{
+  padding: 14px 16px;
+  border-bottom: 1px solid rgba(255,255,255,.10);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+.plx-drawerLeft{
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  min-width: 0;
+}
+.plx-drawerImg{
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  object-fit: cover;
+  border: 1px solid rgba(255,255,255,.12);
+}
+.plx-drawerTitle{
+  font-size: 16px;
+  font-weight: 950;
+  letter-spacing: -.2px;
+}
+.plx-icon{
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.04);
+  color: rgba(255,255,255,.86);
+  cursor: pointer;
+  transition: transform .14s ease, background .14s ease, border-color .14s ease;
+}
+.plx-icon:hover{
+  transform: translateY(-1px);
+  background: rgba(255,255,255,.06);
+  border-color: rgba(255,255,255,.16);
+}
+.plx-icon:focus-visible{ outline: none; box-shadow: var(--plx-ring); }
+
+/* Drawer inner padding */
+.plx-drawer.card{ padding: 14px 16px 16px; }
+
+/* Checkout layout */
+.plx-checkout.card{ padding: 14px 16px 16px; }
+.plx-checkGrid{
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: 14px;
+}
+.plx-methods{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+.plx-method{
+  padding: 10px 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.04);
+  color: rgba(255,255,255,.84);
+  font-size: 13px;
+  font-weight: 900;
+  cursor: pointer;
+  transition: transform .14s ease, background .14s ease, border-color .14s ease;
+}
+.plx-method:hover{ transform: translateY(-1px); background: rgba(255,255,255,.06); }
+.plx-method.active{
+  border-color: rgba(124,58,237,.45);
+  background: rgba(124,58,237,.16);
+  color: rgba(255,255,255,.92);
+}
+
+.plx-form{
+  margin-top: 10px;
+  display: grid;
+  gap: 10px;
+}
+
+.plx-summary{
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.04);
+  border-radius: 18px;
+  padding: 14px;
+}
+
+.plx-summaryBox{ margin-top: 10px; }
+.plx-sumRow{
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 0;
+  border-bottom: 1px dashed rgba(255,255,255,.10);
+}
+.plx-sumRow:last-child{ border-bottom: none; }
+.plx-sumRow .k{ color: rgba(255,255,255,.66); font-weight: 800; font-size: 12px; }
+.plx-sumRow .v{ color: rgba(255,255,255,.90); font-weight: 900; font-size: 13px; text-align: right; }
+.plx-sumRow.total .k, .plx-sumRow.total .v{
+  font-size: 13px;
+  color: rgba(255,255,255,.92);
+}
+.plx-divider{
+  height: 1px;
+  background: rgba(255,255,255,.10);
+  margin: 10px 0;
+}
+
+/* ============================================================
+   RESPONSIVE BREAKPOINTS
+   ============================================================ */
+
+/* <= 1100px */
+@media (max-width: 1100px){
+  .plx-grid{ grid-template-columns: 1fr; }
+  .plx-title{ font-size: 26px; }
+  .plx-tierGrid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .plx-coachGrid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* <= 720px */
+@media (max-width: 720px){
+  .plx-wrap{ padding: 14px 12px 20px; border-radius: 18px; }
+  .plx-head{ flex-direction: column; align-items: stretch; }
+  .plx-headRight{ align-self: flex-start; }
+  .plx-title{ font-size: 22px; }
+
+  .plx-heroTop{ flex-direction: column; align-items: stretch; }
+  .plx-heroActions{ justify-content: flex-start; }
+
+  .plx-tierGrid{ grid-template-columns: 1fr; }
+  .plx-coachGrid{ grid-template-columns: 1fr; }
+
+  .plx-filters{ grid-template-columns: 1fr; }
+
+  .plx-builderRow{ grid-template-columns: 60px 1fr; }
+  .plx-builderRow .plx-field:last-child{ grid-column: 1 / -1; }
+
+  .plx-checkGrid{ grid-template-columns: 1fr; }
+}
+
+/* <= 420px */
+@media (max-width: 420px){
+  .plx-tab{ padding: 9px 12px; }
+  .plx-btn{ width: 100%; justify-content: center; }
+  .plx-row{ gap: 8px; }
+  .plx-dayFocus{ white-space: normal; }
+}
+
+/* ============================================================
+   Small polish: smooth scroll & reduce motion
+   ============================================================ */
+.plx-wrap{ scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce){
+  .plx-liveDot{ animation: none; }
+  .plx-tab, .plx-btn, .plx-dayRow, .plx-tier, .plx-coachCard, .plx-method{ transition: none; }
+}

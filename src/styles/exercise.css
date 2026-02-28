@@ -1,0 +1,965 @@
+/* ============================================================================
+  Exercise Library Tab — Premium Dark UI (Scoped)
+  Works with your global tokens:
+  --bg, --bg-card, --bg-input, --text, --text-muted, --primary, --border, --radius
+  All styles are scoped under .ex-* to avoid conflicts.
+============================================================================ */
+
+.ex-wrap {
+  width: 100%;
+  padding: 16px;
+  color: var(--text);
+  background:
+    radial-gradient(900px 480px at 15% 0%, rgba(255, 85, 0, 0.10), transparent 60%),
+    radial-gradient(900px 520px at 85% 10%, rgba(99, 102, 241, 0.12), transparent 60%),
+    radial-gradient(900px 520px at 60% 100%, rgba(34, 197, 94, 0.08), transparent 65%),
+    var(--bg);
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+/* Safe defaults */
+.ex-wrap * { box-sizing: border-box; }
+.ex-wrap img { display: block; max-width: 100%; }
+.ex-wrap button { font: inherit; }
+.ex-wrap a { color: inherit; }
+
+/* ============================================================================
+  Header
+============================================================================ */
+
+.ex-header {
+  padding: 16px;
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+  box-shadow: 0 18px 55px rgba(0,0,0,0.35);
+  position: relative;
+  overflow: hidden;
+}
+
+.ex-header::before{
+  content:"";
+  position:absolute;
+  inset:-80px;
+  background:
+    radial-gradient(520px 340px at 20% 25%, rgba(255,85,0,0.16), transparent 60%),
+    radial-gradient(480px 340px at 80% 20%, rgba(56,189,248,0.14), transparent 62%),
+    radial-gradient(520px 360px at 60% 90%, rgba(34,197,94,0.10), transparent 65%);
+  pointer-events:none;
+  filter:saturate(1.1);
+}
+.ex-header > * { position: relative; z-index: 1; }
+
+.ex-header-content {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.ex-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(255,255,255,0.04);
+  color: rgba(241,245,249,0.92);
+  font-weight: 800;
+  font-size: 12px;
+  letter-spacing: 0.2px;
+}
+
+.ex-badge-ico {
+  width: 18px;
+  height: 18px;
+  display: grid;
+  place-items: center;
+  color: var(--primary);
+}
+
+.ex-title {
+  font-size: 28px;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.ex-subtitle {
+  color: var(--text-muted);
+  font-size: 13px;
+  line-height: 1.5;
+  max-width: 70ch;
+}
+
+/* ============================================================================
+  Search
+============================================================================ */
+
+.ex-search-container {
+  margin-top: 4px;
+  margin-bottom: 12px;
+}
+
+.ex-search {
+  display: grid;
+  grid-template-columns: 42px 1fr 42px;
+  align-items: center;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(255,255,255,0.04);
+  overflow: hidden;
+}
+
+.ex-search-icon,
+.ex-search-clear {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  color: rgba(241,245,249,0.75);
+}
+
+.ex-search-clear {
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.ex-search-clear:hover {
+  background: rgba(255,255,255,0.06);
+  color: rgba(241,245,249,0.95);
+}
+
+.ex-search-input {
+  width: 100%;
+  height: 42px;
+  border: 0;
+  outline: none;
+  background: transparent;
+  color: var(--text);
+  font-size: 14px;
+  padding: 0 10px;
+}
+.ex-search-input::placeholder {
+  color: rgba(148,163,184,0.85);
+}
+
+/* Focus ring */
+.ex-search:focus-within {
+  border-color: rgba(255,85,0,0.35);
+  box-shadow: 0 0 0 3px rgba(255,85,0,0.16);
+}
+
+/* ============================================================================
+  Filters
+============================================================================ */
+
+.ex-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.ex-filter-select {
+  flex: 1 1 200px;
+  min-width: 160px;
+  height: 42px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(255,255,255,0.04);
+  color: rgba(241,245,249,0.92);
+  padding: 0 12px;
+  outline: none;
+  cursor: pointer;
+}
+
+.ex-filter-select:focus {
+  border-color: rgba(255,85,0,0.35);
+  box-shadow: 0 0 0 3px rgba(255,85,0,0.16);
+}
+
+.ex-filter-reset {
+  height: 42px;
+  padding: 0 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(255,255,255,0.04);
+  color: rgba(241,245,249,0.92);
+  font-weight: 800;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+  white-space: nowrap;
+}
+
+.ex-filter-reset:hover {
+  transform: translateY(-1px);
+  background: rgba(255,255,255,0.07);
+  border-color: rgba(255,85,0,0.26);
+}
+
+.ex-btn-ico {
+  width: 18px;
+  height: 18px;
+  display: grid;
+  place-items: center;
+  color: var(--primary);
+}
+
+/* ============================================================================
+  Category grid
+============================================================================ */
+
+.ex-categories {
+  margin-top: 16px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.ex-category-card {
+  text-align: left;
+  padding: 12px;
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(255,255,255,0.03);
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+  min-width: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.ex-category-card:hover {
+  transform: translateY(-2px);
+  background: rgba(255,255,255,0.05);
+}
+
+.ex-category-card.active {
+  border-color: rgba(255,85,0,0.38);
+  box-shadow: 0 0 0 3px rgba(255,85,0,0.14);
+  background: rgba(255,85,0,0.06);
+}
+
+.ex-category-media {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  height: 92px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(0,0,0,0.18);
+}
+
+.ex-category-image {
+  position: absolute;
+  inset: 0;
+}
+.ex-category-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(1.08) contrast(1.03);
+  transform: scale(1.02);
+}
+.ex-category-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.08), rgba(0,0,0,0.62));
+}
+
+.ex-category-icon {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  width: 38px;
+  height: 38px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.10);
+  color: rgba(241,245,249,0.95);
+  backdrop-filter: blur(12px);
+}
+
+.ex-category-title {
+  margin-top: 10px;
+  font-weight: 950;
+  letter-spacing: -0.01em;
+}
+
+.ex-category-desc {
+  margin-top: 4px;
+  color: rgba(148,163,184,0.95);
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.ex-category-count {
+  margin-top: 8px;
+  font-size: 12px;
+  color: rgba(241,245,249,0.78);
+  font-weight: 800;
+}
+
+.ex-category-benefits {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.ex-category-benefit {
+  font-size: 11px;
+  font-weight: 800;
+  padding: 6px 8px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(255,255,255,0.04);
+  color: rgba(241,245,249,0.84);
+}
+
+/* ============================================================================
+  Exercise cards grid
+============================================================================ */
+
+.ex-grid {
+  margin-top: 16px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.ex-card {
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+  min-width: 0;
+}
+
+.ex-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255,255,255,0.16);
+  background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+}
+
+.ex-card.selected {
+  border-color: rgba(255,85,0,0.40);
+  box-shadow: 0 0 0 3px rgba(255,85,0,0.14);
+}
+
+.ex-card-image {
+  position: relative;
+  height: 180px;
+  background: rgba(0,0,0,0.20);
+}
+
+.ex-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(1.08) contrast(1.02);
+  transform: scale(1.02);
+}
+
+.ex-card-category {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 900;
+  background: rgba(0,0,0,0.45);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: rgba(241,245,249,0.95);
+  backdrop-filter: blur(10px);
+}
+
+.ex-card-difficulty {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 950;
+  border: 1px solid rgba(255,255,255,0.12);
+  backdrop-filter: blur(10px);
+}
+
+/* Tailwind-like utility classes returned by getDifficultyColor()
+   We keep them compatible here (they work even without Tailwind).
+*/
+.bg-emerald-500\/20 { background: rgba(16,185,129,0.18); }
+.text-emerald-400 { color: rgb(52,211,153); }
+.border-emerald-500\/30 { border-color: rgba(16,185,129,0.28); }
+
+.bg-amber-500\/20 { background: rgba(245,158,11,0.16); }
+.text-amber-400 { color: rgb(251,191,36); }
+.border-amber-500\/30 { border-color: rgba(245,158,11,0.28); }
+
+.bg-rose-500\/20 { background: rgba(244,63,94,0.16); }
+.text-rose-400 { color: rgb(251,113,133); }
+.border-rose-500\/30 { border-color: rgba(244,63,94,0.28); }
+
+.ex-card-content {
+  padding: 12px;
+  display: grid;
+  gap: 10px;
+}
+
+.ex-card-title {
+  font-size: 16px;
+  font-weight: 950;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+.ex-card-meta {
+  display: grid;
+  gap: 6px;
+}
+
+.ex-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(241,245,249,0.82);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.ex-meta-ico {
+  width: 16px;
+  height: 16px;
+  display: grid;
+  place-items: center;
+  color: rgba(255,85,0,0.92);
+}
+
+.ex-card-equipment {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.ex-equipment-tag {
+  font-size: 11px;
+  font-weight: 850;
+  padding: 6px 8px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.10);
+  color: rgba(241,245,249,0.85);
+}
+
+.ex-card-description {
+  color: rgba(148,163,184,0.95);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.ex-card-muscles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.ex-muscle-tag {
+  font-size: 11px;
+  font-weight: 850;
+  padding: 6px 8px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(99,102,241,0.10);
+  color: rgba(226,232,255,0.92);
+}
+
+.ex-muscle-tag.primary {
+  background: rgba(255,85,0,0.10);
+  border-color: rgba(255,85,0,0.18);
+  color: rgba(255,225,210,0.95);
+}
+
+.ex-muscle-tag.secondary {
+  background: rgba(56,189,248,0.10);
+  border-color: rgba(56,189,248,0.18);
+  color: rgba(210,245,255,0.95);
+}
+
+.ex-card-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.ex-stat {
+  padding: 10px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.03);
+  min-width: 0;
+}
+
+.ex-stat-label {
+  display: block;
+  font-size: 11px;
+  color: rgba(148,163,184,0.95);
+  font-weight: 800;
+}
+.ex-stat-value {
+  display: block;
+  margin-top: 4px;
+  font-weight: 950;
+  font-size: 12px;
+  color: rgba(241,245,249,0.92);
+}
+
+.ex-view-btn {
+  height: 42px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,85,0,0.35);
+  background: rgba(255,85,0,0.10);
+  color: rgba(255,240,235,0.95);
+  font-weight: 950;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+.ex-view-btn:hover {
+  transform: translateY(-1px);
+  background: rgba(255,85,0,0.16);
+}
+
+/* ============================================================================
+  Empty state
+============================================================================ */
+
+.ex-empty {
+  grid-column: 1 / -1;
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(255,255,255,0.03);
+  padding: 18px;
+  text-align: center;
+  display: grid;
+  gap: 8px;
+}
+
+.ex-empty-icon {
+  width: 54px;
+  height: 54px;
+  border-radius: 18px;
+  margin: 0 auto;
+  display: grid;
+  place-items: center;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.10);
+  color: var(--primary);
+}
+
+.ex-empty h3 {
+  font-size: 16px;
+  font-weight: 950;
+}
+
+.ex-empty p {
+  color: rgba(148,163,184,0.95);
+  font-size: 13px;
+}
+
+.ex-empty-reset {
+  margin: 8px auto 0;
+  height: 42px;
+  padding: 0 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(255,255,255,0.04);
+  color: rgba(241,245,249,0.92);
+  font-weight: 900;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.ex-empty-reset:hover { background: rgba(255,255,255,0.07); }
+
+/* ============================================================================
+  Modal (Detail view)
+============================================================================ */
+
+.ex-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(2,6,23,0.75);
+  backdrop-filter: blur(10px);
+  display: grid;
+  place-items: center;
+  padding: 16px;
+}
+
+.ex-modal {
+  width: min(1100px, 96vw);
+  max-height: min(92vh, 900px);
+  overflow: auto;
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: linear-gradient(180deg, rgba(15,23,42,0.92), rgba(15,23,42,0.78));
+  box-shadow: 0 30px 90px rgba(0,0,0,0.55);
+  position: relative;
+}
+
+.ex-modal-close {
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(255,255,255,0.06);
+  color: rgba(241,245,249,0.92);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+.ex-modal-close:hover {
+  background: rgba(255,255,255,0.10);
+}
+
+.ex-modal-grid {
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  gap: 0;
+  height: 100%;
+}
+
+/* Left (images) */
+.ex-modal-images {
+  padding: 14px;
+  border-right: 1px solid rgba(255,255,255,0.08);
+  overflow: auto;
+}
+
+.ex-modal-main-image {
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(0,0,0,0.18);
+}
+
+.ex-modal-main-image img {
+  width: 100%;
+  height: 360px;
+  object-fit: cover;
+}
+
+.ex-modal-thumbnails {
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.ex-thumbnail {
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(0,0,0,0.16);
+}
+
+.ex-thumbnail img {
+  width: 100%;
+  height: 76px;
+  object-fit: cover;
+  filter: saturate(1.08);
+  transition: transform 0.15s ease;
+}
+.ex-thumbnail:hover img { transform: scale(1.03); }
+
+/* Right (details) */
+.ex-modal-details {
+  padding: 14px;
+  overflow: auto;
+}
+
+.ex-modal-header h2 {
+  font-size: 22px;
+  font-weight: 950;
+  letter-spacing: -0.02em;
+}
+
+.ex-modal-meta {
+  margin-top: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.ex-difficulty-badge,
+.ex-category-badge {
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 950;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(255,255,255,0.04);
+  color: rgba(241,245,249,0.90);
+}
+
+.ex-modal-section {
+  margin-top: 14px;
+  padding: 12px;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.03);
+}
+
+.ex-modal-section h4 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 950;
+  letter-spacing: -0.01em;
+  margin-bottom: 8px;
+}
+
+.ex-h-ico {
+  width: 18px;
+  height: 18px;
+  display: grid;
+  place-items: center;
+  color: var(--primary);
+}
+
+.ex-modal-section p {
+  color: rgba(226,232,240,0.90);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* Lists */
+.ex-benefits-list,
+.ex-tips-list,
+.ex-mistakes-list,
+.ex-contraindications-list {
+  margin: 0;
+  padding-left: 18px;
+  color: rgba(226,232,240,0.88);
+  display: grid;
+  gap: 6px;
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.ex-steps-list {
+  margin: 0;
+  padding-left: 18px;
+  color: rgba(226,232,240,0.90);
+  display: grid;
+  gap: 8px;
+  font-size: 13px;
+  line-height: 1.55;
+}
+.ex-steps-list li::marker { color: rgba(255,85,0,0.85); font-weight: 900; }
+
+.ex-muscle-group {
+  margin-top: 10px;
+  display: grid;
+  gap: 8px;
+}
+.ex-muscle-group strong {
+  font-size: 12px;
+  color: rgba(148,163,184,0.95);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.ex-muscle-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+/* Info grid */
+.ex-info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.ex-info-item {
+  padding: 10px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(0,0,0,0.18);
+}
+
+.ex-info-label {
+  display: block;
+  font-size: 11px;
+  color: rgba(148,163,184,0.95);
+  font-weight: 850;
+}
+.ex-info-value {
+  display: block;
+  margin-top: 4px;
+  font-size: 13px;
+  font-weight: 950;
+  color: rgba(241,245,249,0.92);
+}
+
+/* Modifications */
+.ex-modification {
+  margin-top: 8px;
+  color: rgba(226,232,240,0.90);
+  font-size: 13px;
+  line-height: 1.6;
+}
+.ex-mod-label {
+  font-weight: 950;
+  color: rgba(241,245,249,0.95);
+}
+
+/* Actions */
+.ex-modal-actions {
+  margin-top: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.ex-video-btn,
+.ex-close-btn {
+  height: 44px;
+  padding: 0 14px;
+  border-radius: 14px;
+  font-weight: 950;
+  cursor: pointer;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(255,255,255,0.04);
+  color: rgba(241,245,249,0.92);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+}
+
+.ex-video-btn:hover,
+.ex-close-btn:hover {
+  transform: translateY(-1px);
+  background: rgba(255,255,255,0.07);
+  border-color: rgba(255,85,0,0.25);
+}
+
+.ex-video-btn.disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  border-color: rgba(255,255,255,0.10);
+  background: rgba(255,255,255,0.03);
+}
+.ex-video-btn.disabled:hover {
+  transform: none;
+  border-color: rgba(255,255,255,0.10);
+  background: rgba(255,255,255,0.03);
+}
+
+/* ============================================================================
+  Icons sizing
+============================================================================ */
+
+.ex-ico {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+
+/* ============================================================================
+  Responsive
+============================================================================ */
+
+@media (max-width: 1100px) {
+  .ex-categories { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .ex-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ex-modal-grid { grid-template-columns: 1fr; }
+  .ex-modal-images { border-right: 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .ex-modal-main-image img { height: 320px; }
+}
+
+@media (max-width: 680px) {
+  .ex-wrap { padding: 12px; border-radius: 16px; }
+  .ex-title { font-size: 22px; }
+  .ex-categories { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ex-grid { grid-template-columns: 1fr; }
+  .ex-card-image { height: 170px; }
+  .ex-modal-main-image img { height: 260px; }
+  .ex-modal-thumbnails { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .ex-info-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 420px) {
+  .ex-categories { grid-template-columns: 1fr; }
+  .ex-filter-reset { width: 100%; justify-content: center; }
+}
+
+/* ============================================================================
+  Accessibility / motion
+============================================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .ex-category-card,
+  .ex-card,
+  .ex-filter-reset,
+  .ex-view-btn,
+  .ex-video-btn,
+  .ex-close-btn {
+    transition: none !important;
+  }
+}
+.options {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 14px;
+
+  background: rgba(30, 41, 59, 0.9);
+  color: #f8fafc;
+
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  font-size: 14px;
+  font-weight: 500;
+
+  outline: none;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+/* Hover */
+.options:hover {
+  border-color: #3b82f6;
+}
+
+/* Focus */
+.options:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+/* Dropdown list items */
+.options option {
+  background: #ffffff;
+  color: #111827;
+}

@@ -3,6 +3,7 @@ import { ModelBanner } from "./ModelBanner";
 import { generateCoachReply } from "../server/AiService";
 import { ModelCategory } from "@runanywhere/web";
 import { useModelLoader } from "../hooks/useModelLoader";
+import { useBluetooth } from "../context/BluetoothContext";
 import "../styles/health-coach.css";
 
 interface Message {
@@ -37,11 +38,15 @@ function clampTitle(s: string) {
   return t.length > 40 ? t.slice(0, 40) + "…" : t || "New chat";
 }
 
-function buildPrompt(history: Message[], userText: string) {
+function buildPrompt(history: Message[], userText: string, heartRate?: number | null) {
   const last = history.slice(-10);
-  const sys =
+  let sys =
     "You are an expert Health & Fitness Coach. Give concise, actionable advice. " +
     "Use bullet points when helpful. No medical claims; suggest a professional when needed.\n\n";
+
+  if (heartRate) {
+    sys += `[System Note: The user's current live heart rate is ${heartRate} bpm. Factor this into your advice.]\n\n`;
+  }
 
   const convo = last
     .filter((m) => m.text?.trim())
@@ -111,6 +116,8 @@ function saveSessions(sessions: ChatSession[]) {
 }
 
 export function ChatTab() {
+  const { heartRate } = useBluetooth();
+
   // RunAnywhere loader used only for status / readiness
   const onDevice = useModelLoader(ModelCategory.Language, {
     coexist: true,
@@ -315,7 +322,7 @@ export function ChatTab() {
     const t0 = performance.now();
 
     try {
-      const prompt = buildPrompt(historySnapshotRef.current, text);
+      const prompt = buildPrompt(historySnapshotRef.current, text, heartRate);
       const { text: replyText, tokensUsed } = await generateCoachReply(prompt, abortRef.current.signal);
 
       const latencyMs = Math.max(0, performance.now() - t0);
@@ -360,7 +367,7 @@ export function ChatTab() {
       assistantIndexRef.current = null;
       setGenerating(false);
     }
-  }, [input, generating, ensureActiveSession, updateActiveSessionMessages]);
+  }, [input, generating, ensureActiveSession, updateActiveSessionMessages, heartRate]);
 
   const inferenceLabel = apiState === "ready" ? "Live" : apiState === "loading" ? "Thinking…" : "Error";
 

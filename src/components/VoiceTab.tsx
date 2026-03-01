@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { generateCoachReply } from "../server/AiService";
+import { useBluetooth } from "../context/BluetoothContext";
 
 type VoiceState = "idle" | "listening" | "processing" | "speaking";
 type UiError = string | null;
@@ -28,6 +29,7 @@ function normalizeWebSpeechError(err: any) {
  * - Orb audio level via WebAudio analyser (only while listening)
  */
 export function VoiceTab() {
+  const { heartRate } = useBluetooth();
   const [voiceState, setVoiceState] = useState<VoiceState>("idle");
   const [transcript, setTranscript] = useState("");
   const [response, setResponse] = useState("");
@@ -54,12 +56,12 @@ export function VoiceTab() {
     }
     try {
       audioCtxRef.current?.close?.();
-    } catch {}
+    } catch { }
     audioCtxRef.current = null;
 
     try {
       streamRef.current?.getTracks?.().forEach((t) => t.stop());
-    } catch {}
+    } catch { }
     streamRef.current = null;
 
     setAudioLevel(0);
@@ -110,7 +112,7 @@ export function VoiceTab() {
         r.onend = null;
         r.stop?.();
       }
-    } catch {}
+    } catch { }
     recognitionRef.current = null;
 
     // Stop listening flags
@@ -122,12 +124,12 @@ export function VoiceTab() {
     // Cancel TTS
     try {
       window.speechSynthesis?.cancel?.();
-    } catch {}
+    } catch { }
 
     // Abort API
     try {
       apiAbortRef.current?.abort();
-    } catch {}
+    } catch { }
 
     setVoiceState("idle");
   }, [stopLevelMeter]);
@@ -156,14 +158,17 @@ export function VoiceTab() {
     const ac = new AbortController();
     apiAbortRef.current = ac;
 
+    const hrContext = heartRate ? `[System Note: The user's current live heart rate is ${heartRate} bpm.]\n\n` : "";
+
     const prompt =
       "You are a helpful voice fitness assistant. Keep answers concise (1-2 sentences). " +
       "Avoid medical claims; suggest a professional if needed.\n\n" +
+      hrContext +
       `User said: ${userText}\nAssistant:`;
 
     const { text } = await generateCoachReply(prompt, ac.signal);
     return (text || "").trim() || "Okay. Tell me a bit more so I can help.";
-  }, []);
+  }, [heartRate]);
 
   const processText = useCallback(
     async (text: string) => {

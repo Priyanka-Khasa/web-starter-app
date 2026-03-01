@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { initSDK, getAccelerationMode } from "./runanywhere";
+import { BluetoothProvider, useBluetooth } from "./context/BluetoothContext";
 
 import { LoginPage } from "./components/LoginPage";
 
@@ -153,6 +154,8 @@ function AppShell() {
   const [activeTab, setActiveTab] = useState<Tab>("dashboard");
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false); // ✅ NEW
 
+  const { heartRate, isConnected, connect, disconnect, error } = useBluetooth();
+
   useEffect(() => {
     if (!isAuthed) return;
 
@@ -193,7 +196,7 @@ function AppShell() {
 
   return (
     <div className={`appLayout ${sidebarCollapsed ? "collapsed" : ""}`}>
-      
+
       {/* ================= Sidebar ================= */}
       <aside className="sidebar">
         <div className="sidebarTop">
@@ -237,6 +240,26 @@ function AppShell() {
             <div className="topbarBadge">
               {accel === "webgpu" ? "WebGPU Accelerated" : "On-device AI"}
             </div>
+
+            {/* NEW BLUETOOTH UI */}
+            {isConnected ? (
+              <button
+                className="logoutBtn"
+                style={{ background: "var(--primary-color, #10b981)", color: "#fff", border: "1px solid var(--primary-color, #10b981)" }}
+                onClick={disconnect}
+                title="Disconnect Heart Rate Monitor"
+              >
+                ❤️ {heartRate ? `${heartRate} bpm` : "Connected"}
+              </button>
+            ) : (
+              <button
+                className="logoutBtn"
+                onClick={connect}
+                title={error || "Connect Heart Rate Monitor"}
+              >
+                Connect HR
+              </button>
+            )}
 
             <button
               className="logoutBtn"
@@ -286,5 +309,9 @@ function AppShell() {
   }
 }
 export function App() {
-  return <AppShell />;
+  return (
+    <BluetoothProvider>
+      <AppShell />
+    </BluetoothProvider>
+  );
 }

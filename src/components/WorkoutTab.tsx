@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
+import { useBluetooth } from "../context/BluetoothContext";
 
 // ✅ HERO collage images (top section)
 import hero1 from "../assets/workout-image1.webp";
@@ -170,49 +171,49 @@ const CATEGORY_TILES: Array<{
   img: string;
   set: Partial<{ category: Category; difficulty: Difficulty; maxDuration: number }>;
 }> = [
-  {
-    key: "Quick",
-    title: "Quick Start",
-    sub: "15–20 min • beginner-friendly",
-    img: HERO.d,
-    set: { difficulty: "Beginner", maxDuration: 20 },
-  },
-  {
-    key: "Strength",
-    title: "Strength",
-    sub: "Build muscle & power",
-    img: HERO.a,
-    set: { category: "Strength" },
-  },
-  {
-    key: "Cardio",
-    title: "Cardio",
-    sub: "Endurance & heart health",
-    img: HERO.b,
-    set: { category: "Cardio" },
-  },
-  {
-    key: "Mobility",
-    title: "Mobility",
-    sub: "Recovery & flexibility",
-    img: HERO.c,
-    set: { category: "Mobility", difficulty: "Beginner" },
-  },
-  {
-    key: "Core",
-    title: "Core",
-    sub: "Stability & posture",
-    img: thumb5,
-    set: { category: "Core", difficulty: "Beginner" },
-  },
-  {
-    key: "HIIT",
-    title: "HIIT",
-    sub: "Fast conditioning",
-    img: thumb8,
-    set: { category: "HIIT" },
-  },
-];
+    {
+      key: "Quick",
+      title: "Quick Start",
+      sub: "15–20 min • beginner-friendly",
+      img: HERO.d,
+      set: { difficulty: "Beginner", maxDuration: 20 },
+    },
+    {
+      key: "Strength",
+      title: "Strength",
+      sub: "Build muscle & power",
+      img: HERO.a,
+      set: { category: "Strength" },
+    },
+    {
+      key: "Cardio",
+      title: "Cardio",
+      sub: "Endurance & heart health",
+      img: HERO.b,
+      set: { category: "Cardio" },
+    },
+    {
+      key: "Mobility",
+      title: "Mobility",
+      sub: "Recovery & flexibility",
+      img: HERO.c,
+      set: { category: "Mobility", difficulty: "Beginner" },
+    },
+    {
+      key: "Core",
+      title: "Core",
+      sub: "Stability & posture",
+      img: thumb5,
+      set: { category: "Core", difficulty: "Beginner" },
+    },
+    {
+      key: "HIIT",
+      title: "HIIT",
+      sub: "Fast conditioning",
+      img: thumb8,
+      set: { category: "HIIT" },
+    },
+  ];
 
 /* -------------------------------------------------------------------------- */
 /*                                  workouts                                  */
@@ -345,6 +346,7 @@ const WORKOUTS: Workout[] = [
 /* -------------------------------------------------------------------------- */
 
 export function WorkoutsTab() {
+  const { heartRate } = useBluetooth();
   const [persisted, setPersisted] = useState<Persisted>(() => loadPersisted());
 
   // filters
@@ -627,7 +629,14 @@ export function WorkoutsTab() {
       {sessionView && (
         <div className="wk2-active">
           <div className="wk2-active-left">
-            <div className="wk2-active-title">{sessionView.w.title}</div>
+            <div className="wk2-active-title">
+              {sessionView.w.title}
+              {heartRate && (
+                <span style={{ marginLeft: "12px", color: "var(--primary-color, #10b981)", fontWeight: 600 }}>
+                  ❤️ {heartRate} bpm
+                </span>
+              )}
+            </div>
             <div className="wk2-muted">
               Step {session!.currentStepIndex + 1}/{sessionView.w.steps.length} • {sessionView.progressPct}%
             </div>

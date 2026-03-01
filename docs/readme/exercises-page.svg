@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="640" viewBox="0 0 1200 640" role="img" aria-label="Exercise library preview">
+  <defs>
+    <linearGradient id="bg-exercises" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#4338ca" />
+      <stop offset="100%" stop-color="#172554" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="640" fill="url(#bg-exercises)" rx="28" />
+  <text x="82" y="116" fill="#e0e7ff" font-size="18" font-family="Arial, sans-serif">Knowledge base</text>
+  <text x="82" y="170" fill="#ffffff" font-size="44" font-weight="700" font-family="Arial, sans-serif">Exercise Library</text>
+  <text x="82" y="214" fill="#c7d2fe" font-size="20" font-family="Arial, sans-serif">Searchable categories, detailed exercise data, and instructional imagery.</text>
+  <rect x="80" y="282" width="332" height="220" rx="24" fill="#e0e7ff" />
+  <text x="112" y="336" fill="#312e81" font-size="24" font-family="Arial, sans-serif">Category banners</text>
+  <text x="112" y="378" fill="#312e81" font-size="24" font-family="Arial, sans-serif">Difficulty and equipment filters</text>
+  <text x="112" y="420" fill="#312e81" font-size="24" font-family="Arial, sans-serif">Muscles, benefits, and tags</text>
+  <rect x="448" y="86" width="668" height="468" rx="30" fill="#eef2ff" />
+  <rect x="492" y="132" width="280" height="150" rx="20" fill="#c7d2fe" />
+  <rect x="798" y="132" width="274" height="150" rx="20" fill="#a5b4fc" />
+  <rect x="492" y="312" width="580" height="194" rx="20" fill="#ddd6fe" />
+  <text x="526" y="206" fill="#312e81" font-size="22" font-family="Arial, sans-serif">Exercise cards and image thumbnails</text>
+  <text x="832" y="206" fill="#312e81" font-size="22" font-family="Arial, sans-serif">Body region filters</text>
+  <text x="526" y="390" fill="#4c1d95" font-size="22" font-family="Arial, sans-serif">Modal with steps, form tips, mistakes, contraindications, and modifications</text>
+</svg>

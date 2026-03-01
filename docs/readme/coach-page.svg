@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="640" viewBox="0 0 1200 640" role="img" aria-label="Coach page preview">
+  <defs>
+    <linearGradient id="bg-coach" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#7c3aed" />
+      <stop offset="100%" stop-color="#1e1b4b" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="640" fill="url(#bg-coach)" rx="28" />
+  <text x="82" y="120" fill="#ede9fe" font-size="18" font-family="Arial, sans-serif">Conversational guidance</text>
+  <text x="82" y="174" fill="#ffffff" font-size="44" font-weight="700" font-family="Arial, sans-serif">AI Health Coach</text>
+  <text x="82" y="218" fill="#ddd6fe" font-size="20" font-family="Arial, sans-serif">Multi-session chat, exports, quick prompts, and response metrics.</text>
+  <rect x="82" y="286" width="294" height="220" rx="24" fill="#312e81" opacity="0.88" />
+  <text x="112" y="336" fill="#ffffff" font-size="24" font-family="Arial, sans-serif">History drawer</text>
+  <text x="112" y="380" fill="#c4b5fd" font-size="20" font-family="Arial, sans-serif">Rename, delete, export TXT, export JSON</text>
+  <rect x="432" y="84" width="690" height="480" rx="32" fill="#faf5ff" />
+  <rect x="478" y="134" width="298" height="82" rx="20" fill="#ede9fe" />
+  <rect x="778" y="246" width="300" height="96" rx="20" fill="#ddd6fe" />
+  <rect x="478" y="366" width="360" height="104" rx="20" fill="#c4b5fd" />
+  <text x="510" y="184" fill="#4c1d95" font-size="22" font-family="Arial, sans-serif">Quick prompts and prompt builder</text>
+  <text x="810" y="304" fill="#4c1d95" font-size="22" font-family="Arial, sans-serif">Token and latency stats</text>
+  <text x="510" y="426" fill="#312e81" font-size="22" font-family="Arial, sans-serif">Heart-rate context added to prompts when connected</text>
+</svg>

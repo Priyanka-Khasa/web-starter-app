@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="640" viewBox="0 0 1200 640" role="img" aria-label="Nutrition page preview">
+  <defs>
+    <linearGradient id="bg-nutrition" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#16a34a" />
+      <stop offset="100%" stop-color="#14532d" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="640" fill="url(#bg-nutrition)" rx="28" />
+  <text x="82" y="118" fill="#dcfce7" font-size="18" font-family="Arial, sans-serif">Diet planning</text>
+  <text x="82" y="172" fill="#ffffff" font-size="44" font-weight="700" font-family="Arial, sans-serif">Nutrition Tracker</text>
+  <text x="82" y="216" fill="#bbf7d0" font-size="20" font-family="Arial, sans-serif">Offline calorie tracking, macros, food diary, and custom foods.</text>
+  <rect x="82" y="280" width="314" height="196" rx="24" fill="#f0fdf4" />
+  <text x="116" y="334" fill="#166534" font-size="24" font-family="Arial, sans-serif">BMR and TDEE</text>
+  <text x="116" y="376" fill="#166534" font-size="24" font-family="Arial, sans-serif">Macro targets</text>
+  <text x="116" y="418" fill="#166534" font-size="24" font-family="Arial, sans-serif">Meal split guidance</text>
+  <rect x="450" y="86" width="664" height="464" rx="30" fill="#ffffff" />
+  <rect x="494" y="132" width="270" height="150" rx="20" fill="#dcfce7" />
+  <rect x="790" y="132" width="278" height="150" rx="20" fill="#bbf7d0" />
+  <rect x="494" y="312" width="574" height="194" rx="20" fill="#ecfccb" />
+  <text x="530" y="204" fill="#166534" font-size="22" font-family="Arial, sans-serif">Profile and target controls</text>
+  <text x="824" y="204" fill="#166534" font-size="22" font-family="Arial, sans-serif">Food search and logging</text>
+  <text x="530" y="388" fill="#365314" font-size="22" font-family="Arial, sans-serif">Daily diary, totals, remaining targets, and custom food modal</text>
+</svg>

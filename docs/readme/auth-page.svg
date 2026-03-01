@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="640" viewBox="0 0 1200 640" role="img" aria-label="Authentication page preview">
+  <defs>
+    <linearGradient id="bg-auth" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#1e293b" />
+    </linearGradient>
+    <linearGradient id="panel-auth" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f8fafc" />
+      <stop offset="100%" stop-color="#e2e8f0" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="640" fill="url(#bg-auth)" rx="28" />
+  <rect x="72" y="72" width="380" height="496" rx="28" fill="#111827" opacity="0.95" />
+  <text x="112" y="148" fill="#f8fafc" font-size="22" font-family="Arial, sans-serif">Fitness Coach</text>
+  <text x="112" y="196" fill="#ffffff" font-size="42" font-weight="700" font-family="Arial, sans-serif">Authentication</text>
+  <text x="112" y="240" fill="#94a3b8" font-size="20" font-family="Arial, sans-serif">Local sign in, sign up, validation, and remember-me state.</text>
+  <rect x="112" y="292" width="286" height="54" rx="14" fill="#1f2937" stroke="#334155" />
+  <rect x="112" y="364" width="286" height="54" rx="14" fill="#1f2937" stroke="#334155" />
+  <rect x="112" y="436" width="160" height="48" rx="14" fill="#2563eb" />
+  <text x="156" y="467" fill="#ffffff" font-size="20" font-family="Arial, sans-serif">Sign in</text>
+  <rect x="520" y="92" width="608" height="456" rx="32" fill="url(#panel-auth)" />
+  <text x="566" y="152" fill="#0f172a" font-size="30" font-weight="700" font-family="Arial, sans-serif">Key behaviors</text>
+  <rect x="566" y="186" width="500" height="72" rx="18" fill="#ffffff" />
+  <text x="594" y="230" fill="#0f172a" font-size="24" font-family="Arial, sans-serif">Login and signup modes in one screen</text>
+  <rect x="566" y="280" width="500" height="72" rx="18" fill="#ffffff" />
+  <text x="594" y="324" fill="#0f172a" font-size="24" font-family="Arial, sans-serif">Remember-me persistence using browser storage</text>
+  <rect x="566" y="374" width="500" height="72" rx="18" fill="#ffffff" />
+  <text x="594" y="418" fill="#0f172a" font-size="24" font-family="Arial, sans-serif">Validation and demo-only local auth flow</text>
+</svg>

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="640" viewBox="0 0 1200 640" role="img" aria-label="Posture page preview">
+  <defs>
+    <linearGradient id="bg-posture" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0891b2" />
+      <stop offset="100%" stop-color="#082f49" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="640" fill="url(#bg-posture)" rx="28" />
+  <text x="82" y="116" fill="#cffafe" font-size="18" font-family="Arial, sans-serif">Computer vision</text>
+  <text x="82" y="170" fill="#ffffff" font-size="44" font-weight="700" font-family="Arial, sans-serif">Posture Detection</text>
+  <text x="82" y="214" fill="#a5f3fc" font-size="20" font-family="Arial, sans-serif">Camera analysis with exercise-specific feedback and history.</text>
+  <rect x="80" y="274" width="348" height="250" rx="28" fill="#083344" opacity="0.82" />
+  <rect x="148" y="318" width="12" height="140" rx="6" fill="#67e8f9" />
+  <rect x="210" y="318" width="12" height="140" rx="6" fill="#67e8f9" />
+  <line x1="154" y1="350" x2="216" y2="330" stroke="#67e8f9" stroke-width="10" stroke-linecap="round" />
+  <line x1="154" y1="410" x2="216" y2="438" stroke="#67e8f9" stroke-width="10" stroke-linecap="round" />
+  <line x1="154" y1="390" x2="114" y2="448" stroke="#67e8f9" stroke-width="10" stroke-linecap="round" />
+  <line x1="216" y1="390" x2="278" y2="450" stroke="#67e8f9" stroke-width="10" stroke-linecap="round" />
+  <circle cx="184" cy="288" r="28" fill="#67e8f9" />
+  <rect x="468" y="86" width="648" height="470" rx="30" fill="#ecfeff" />
+  <rect x="512" y="136" width="560" height="114" rx="20" fill="#cffafe" />
+  <rect x="512" y="276" width="264" height="230" rx="20" fill="#a5f3fc" />
+  <rect x="808" y="276" width="264" height="230" rx="20" fill="#bae6fd" />
+  <text x="544" y="198" fill="#155e75" font-size="22" font-family="Arial, sans-serif">Standing, squat, push-up, and plank analysis</text>
+  <text x="544" y="354" fill="#0c4a6e" font-size="22" font-family="Arial, sans-serif">Live metrics</text>
+  <text x="544" y="394" fill="#0c4a6e" font-size="20" font-family="Arial, sans-serif">Angles, tilt, alignment, body line</text>
+  <text x="840" y="354" fill="#0c4a6e" font-size="22" font-family="Arial, sans-serif">Session history</text>
+  <text x="840" y="394" fill="#0c4a6e" font-size="20" font-family="Arial, sans-serif">Correct, warning, bad, no-person ratios</text>
+</svg>

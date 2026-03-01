@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="640" viewBox="0 0 1200 640" role="img" aria-label="Dashboard page preview">
+  <defs>
+    <linearGradient id="bg-dashboard" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f766e" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="640" fill="url(#bg-dashboard)" rx="28" />
+  <text x="84" y="118" fill="#ccfbf1" font-size="18" font-family="Arial, sans-serif">Home screen</text>
+  <text x="84" y="172" fill="#ffffff" font-size="44" font-weight="700" font-family="Arial, sans-serif">Dashboard</text>
+  <text x="84" y="216" fill="#99f6e4" font-size="20" font-family="Arial, sans-serif">Profile summary, BMI, calories, local media, and daily recommendations.</text>
+  <rect x="78" y="286" width="320" height="186" rx="26" fill="#f0fdfa" />
+  <text x="110" y="338" fill="#134e4a" font-size="26" font-weight="700" font-family="Arial, sans-serif">Your profile</text>
+  <text x="110" y="380" fill="#134e4a" font-size="22" font-family="Arial, sans-serif">BMI and calories</text>
+  <text x="110" y="420" fill="#134e4a" font-size="22" font-family="Arial, sans-serif">Avatar upload</text>
+  <rect x="450" y="86" width="662" height="468" rx="32" fill="#ffffff" opacity="0.96" />
+  <rect x="494" y="128" width="270" height="138" rx="24" fill="#ccfbf1" />
+  <rect x="786" y="128" width="270" height="138" rx="24" fill="#d1fae5" />
+  <rect x="494" y="292" width="562" height="214" rx="24" fill="#ecfeff" />
+  <text x="528" y="188" fill="#115e59" font-size="24" font-family="Arial, sans-serif">Theme controls</text>
+  <text x="820" y="188" fill="#166534" font-size="24" font-family="Arial, sans-serif">KPI cards</text>
+  <text x="528" y="358" fill="#155e75" font-size="28" font-weight="700" font-family="Arial, sans-serif">Local clips and recommended videos</text>
+  <text x="528" y="404" fill="#155e75" font-size="22" font-family="Arial, sans-serif">Quick actions, checklists, and privacy-first storage</text>
+</svg>

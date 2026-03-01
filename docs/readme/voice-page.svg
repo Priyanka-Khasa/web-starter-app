@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="640" viewBox="0 0 1200 640" role="img" aria-label="Voice page preview">
+  <defs>
+    <linearGradient id="bg-voice" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ea580c" />
+      <stop offset="100%" stop-color="#431407" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="640" fill="url(#bg-voice)" rx="28" />
+  <circle cx="250" cy="330" r="118" fill="#fed7aa" opacity="0.25" />
+  <circle cx="250" cy="330" r="76" fill="#fb923c" opacity="0.75" />
+  <circle cx="250" cy="330" r="38" fill="#fff7ed" />
+  <text x="82" y="112" fill="#ffedd5" font-size="18" font-family="Arial, sans-serif">Speech workflow</text>
+  <text x="82" y="166" fill="#ffffff" font-size="44" font-weight="700" font-family="Arial, sans-serif">Voice Assistant</text>
+  <text x="82" y="210" fill="#fed7aa" font-size="20" font-family="Arial, sans-serif">Speech recognition, AI replies, TTS playback, and audio-level visualization.</text>
+  <rect x="470" y="92" width="642" height="452" rx="30" fill="#fff7ed" />
+  <rect x="512" y="142" width="252" height="86" rx="18" fill="#ffedd5" />
+  <rect x="790" y="142" width="280" height="86" rx="18" fill="#fed7aa" />
+  <rect x="512" y="260" width="558" height="96" rx="18" fill="#fdba74" />
+  <rect x="512" y="386" width="558" height="96" rx="18" fill="#ffedd5" />
+  <text x="544" y="194" fill="#9a3412" font-size="22" font-family="Arial, sans-serif">Mic state handling</text>
+  <text x="822" y="194" fill="#9a3412" font-size="22" font-family="Arial, sans-serif">Permission errors</text>
+  <text x="544" y="320" fill="#7c2d12" font-size="22" font-family="Arial, sans-serif">Browser STT to local AI response pipeline</text>
+  <text x="544" y="446" fill="#7c2d12" font-size="22" font-family="Arial, sans-serif">Spoken output and heart-rate-aware prompts</text>
+</svg>

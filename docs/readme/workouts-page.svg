@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="640" viewBox="0 0 1200 640" role="img" aria-label="Workouts page preview">
+  <defs>
+    <linearGradient id="bg-workouts" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#dc2626" />
+      <stop offset="100%" stop-color="#450a0a" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="640" fill="url(#bg-workouts)" rx="28" />
+  <text x="84" y="116" fill="#fee2e2" font-size="18" font-family="Arial, sans-serif">Training hub</text>
+  <text x="84" y="170" fill="#ffffff" font-size="44" font-weight="700" font-family="Arial, sans-serif">Workouts</text>
+  <text x="84" y="214" fill="#fecaca" font-size="20" font-family="Arial, sans-serif">Library filters, guided sessions, weekly plans, and workout history.</text>
+  <rect x="84" y="282" width="334" height="206" rx="24" fill="#fee2e2" />
+  <text x="116" y="338" fill="#7f1d1d" font-size="24" font-family="Arial, sans-serif">Category tiles</text>
+  <text x="116" y="378" fill="#7f1d1d" font-size="24" font-family="Arial, sans-serif">Duration and equipment filters</text>
+  <text x="116" y="418" fill="#7f1d1d" font-size="24" font-family="Arial, sans-serif">Workout card library</text>
+  <rect x="456" y="86" width="658" height="466" rx="30" fill="#fff7ed" />
+  <rect x="500" y="132" width="272" height="144" rx="20" fill="#fed7aa" />
+  <rect x="794" y="132" width="276" height="144" rx="20" fill="#fecaca" />
+  <rect x="500" y="304" width="570" height="200" rx="20" fill="#fee2e2" />
+  <text x="534" y="206" fill="#9a3412" font-size="22" font-family="Arial, sans-serif">Drawer with step-by-step workout details</text>
+  <text x="828" y="206" fill="#991b1b" font-size="22" font-family="Arial, sans-serif">Weekly plan</text>
+  <text x="534" y="388" fill="#7f1d1d" font-size="22" font-family="Arial, sans-serif">Session runner with timers, set counter, notes, history, and heart rate</text>
+</svg>

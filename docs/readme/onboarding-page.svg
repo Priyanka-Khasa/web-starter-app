@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="640" viewBox="0 0 1200 640" role="img" aria-label="Onboarding page preview">
+  <defs>
+    <linearGradient id="bg-onboarding" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1d4ed8" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="640" fill="url(#bg-onboarding)" rx="28" />
+  <text x="82" y="120" fill="#dbeafe" font-size="18" font-family="Arial, sans-serif">Personalization flow</text>
+  <text x="82" y="176" fill="#ffffff" font-size="44" font-weight="700" font-family="Arial, sans-serif">Onboarding Wizard</text>
+  <text x="82" y="220" fill="#bfdbfe" font-size="20" font-family="Arial, sans-serif">Goal, profile, and activity data stored locally for tailored guidance.</text>
+  <rect x="82" y="280" width="420" height="14" rx="7" fill="#1e3a8a" />
+  <rect x="82" y="280" width="315" height="14" rx="7" fill="#f8fafc" />
+  <g transform="translate(82 334)">
+    <circle cx="0" cy="0" r="12" fill="#f8fafc" />
+    <circle cx="76" cy="0" r="12" fill="#f8fafc" />
+    <circle cx="152" cy="0" r="12" fill="#f8fafc" />
+    <circle cx="228" cy="0" r="12" fill="#f8fafc" />
+    <circle cx="304" cy="0" r="12" fill="#93c5fd" />
+    <circle cx="380" cy="0" r="12" fill="#60a5fa" />
+  </g>
+  <rect x="590" y="84" width="530" height="492" rx="32" fill="#eff6ff" />
+  <text x="632" y="148" fill="#0f172a" font-size="30" font-weight="700" font-family="Arial, sans-serif">Data captured</text>
+  <rect x="632" y="184" width="220" height="78" rx="18" fill="#ffffff" />
+  <text x="660" y="230" fill="#0f172a" font-size="22" font-family="Arial, sans-serif">Goal selection</text>
+  <rect x="876" y="184" width="220" height="78" rx="18" fill="#ffffff" />
+  <text x="904" y="230" fill="#0f172a" font-size="22" font-family="Arial, sans-serif">Body metrics</text>
+  <rect x="632" y="286" width="220" height="78" rx="18" fill="#ffffff" />
+  <text x="660" y="332" fill="#0f172a" font-size="22" font-family="Arial, sans-serif">Activity level</text>
+  <rect x="876" y="286" width="220" height="78" rx="18" fill="#ffffff" />
+  <text x="904" y="332" fill="#0f172a" font-size="22" font-family="Arial, sans-serif">Validation gates</text>
+  <rect x="632" y="388" width="464" height="120" rx="22" fill="#dbeafe" />
+  <text x="664" y="438" fill="#1e3a8a" font-size="24" font-family="Arial, sans-serif">Feeds dashboard metrics, habit suggestions, and plan defaults.</text>
+</svg>
